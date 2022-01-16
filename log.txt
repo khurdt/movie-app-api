@@ -1,0 +1,63 @@
+URL: /
+Timestamp: Sun Jan 16 2022 13:48:39 GMT-0600 (Central Standard Time)
+
+URL: /css/styles.css
+Timestamp: Sun Jan 16 2022 13:48:39 GMT-0600 (Central Standard Time)
+
+URL: /favicon.ico
+Timestamp: Sun Jan 16 2022 13:48:39 GMT-0600 (Central Standard Time)
+
+URL: /
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /css/styles.css
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /favicon.ico
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /css/styles.css
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /favicon.ico
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /css/styles.css
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /favicon.ico
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /css/styles.css
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /favicon.ico
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /css/styles.css
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /favicon.ico
+Timestamp: Sun Jan 16 2022 13:48:40 GMT-0600 (Central Standard Time)
+
+URL: /
+Timestamp: Sun Jan 16 2022 13:48:41 GMT-0600 (Central Standard Time)
+
+URL: /css/styles.css
+Timestamp: Sun Jan 16 2022 13:48:41 GMT-0600 (Central Standard Time)
+
+URL: /favicon.ico
+Timestamp: Sun Jan 16 2022 13:48:41 GMT-0600 (Central Standard Time)
+
