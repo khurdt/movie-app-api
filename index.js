@@ -66,7 +66,7 @@ app.use(morgan('common'));
 
 app.use(express.static('public'));
 
-//--------GET--------------------------------------------------
+//--------GET---------------------------------------------------
 
 app.get('/', (req, res) => {
 	let responseText = 'Welcome to my movie collection\n';
@@ -80,6 +80,14 @@ app.get('/documentation.html', (req, res) => {
 app.get('/movies', (req, res) => {
 	res.json(movies);
 });
+
+//--------POST---------------------------------------------------
+
+
+//--------PUT----------------------------------------------------
+
+
+//--------DELETE-------------------------------------------------
 
 app.listen(8080, () => {
 	console.log('Your app is listening on port 8080.');
