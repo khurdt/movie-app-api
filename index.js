@@ -4,6 +4,8 @@ const express = require('express'),
 	bodyParser = require('body-parser'),
   	methodOverride = require('method-override');
 
+let users = []
+
 let movies = [
 	{
 		title:'The Passion of the Christ',
@@ -54,13 +56,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(bodyParser.json());
-app.use(methodOverride());
 
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-  next();
-});
+app.use(methodOverride());
 
 app.use(morgan('common'));
 
@@ -88,6 +85,16 @@ app.get('/movies', (req, res) => {
 
 
 //--------DELETE-------------------------------------------------
+
+//--------Error Handler------------------------------------------
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+  next();
+});
+
+//--------END-----------------------------------------------------
 
 app.listen(8080, () => {
 	console.log('Your app is listening on port 8080.');
