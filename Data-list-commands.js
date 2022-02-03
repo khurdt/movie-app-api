@@ -33,6 +33,14 @@ db.users.remove({ '_id': ObjectId('61f467e73af2b003337c5ce1')})
 
 let users = [
 	{
+		"username": "Bob",
+		"password": "bob555",
+		"email": "bob555@gmail.com",
+		"favoriteMovies": [],
+		"_id": "61f91e32b2f19563e24f9f78",
+		"__v": 0
+	}
+	{
 		'_id': ObjectId("61f467c13af2b003337c5ce0"),
 		username: 'Kim Pablo',
 		password: '5858',

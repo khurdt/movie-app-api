@@ -1,0 +1,10 @@
+body {
+	font-family: fantasy;
+	font-size: 100px;
+}
+
+.title {
+	margin: auto;
+	border: 2px solid rgba(10, 10, 0, 1.0);
+	background-color: purple;
+}
