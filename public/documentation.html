@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Documentation</title>
-	<!-- <link rel="stylesheet" type="text/css" href="./css/styles.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="./styles.css"> -->
 </head>
 <body>
 	<table>
@@ -21,6 +21,13 @@
 		<tbody>
 			<tr>
 				<td>GET</td>
+				<td>'/users'</td>
+				<td>None</td>
+				<td>Return a list of all users and their data to the user</td>
+				<td>returns Json data of all users</td>
+			</tr>
+			<tr>
+				<td>GET</td>
 				<td>'/movies'</td>
 				<td>None</td>
 				<td>Return a list of all movies and their data to the user</td>
@@ -35,14 +42,14 @@
 			</tr>
 			<tr>
 				<td>GET</td>
-				<td>'/movies/director/:directorName'</td>
+				<td>'/director/:name'</td>
 				<td>director name</td>
 				<td>Return a specific director</td>
 				<td>Returns Json data of a specific director</td>
 			</tr>
 			<tr>
 				<td>GET</td>
-				<td>'/movies/genre/:genreName'</td>
+				<td>'/genre/:name'</td>
 				<td>the genre name</td>
 				<td>Return a specific genre</td>
 				<td>Returns Json data of a specific genre</td>
@@ -56,30 +63,30 @@
 			</tr>
 			<tr>
 				<td>PUT</td>
-				<td>'/users/:userId'</td>
-				<td>user's id</td>
-				<td>Update user's name using id</td>
+				<td>'/users/:username'</td>
+				<td>username</td>
+				<td>Update user's name using username</td>
 				<td>Replaces previous username with new one</td>
 			</tr>
 			<tr>
 				<td>POST</td>
-				<td>'/users/:userId/:movieTitle'</td>
-				<td>user's id and the movie title</td>
-				<td>Post a movie in user's favorite list using id and movie title</td>
+				<td>'/users/:username/movies/:title'</td>
+				<td>username and the movie title</td>
+				<td>Post a movie in user's favorite list using username and movie title</td>
 				<td>Pushes Json data selected movie to favoriteMovies array</td>
 			</tr>
 			<tr>
 				<td>DELETE</td>
-				<td>'/users/:userId/:movieTitle'</td>
-				<td>user's id and the movie title</td>
-				<td>Delete specific movie using id and movie title from the user's favorite list</td>
+				<td>'/users/:username/movies/:title'</td>
+				<td>username and the movie title</td>
+				<td>Delete specific movie using username and movie title from the user's favorite list</td>
 				<td>Removes Json data of specific movie from favoriteMovie array</td>
 			</tr>
 			<tr>
 				<td>DELETE</td>
-				<td>'/users/:userId'</td>
-				<td>user's id</td>
-				<td>Delete user using user id</td>
+				<td>'/users/:username'</td>
+				<td>username</td>
+				<td>Delete user using username</td>
 				<td>Removes Json data of user from the users array</td>
 			</tr>
 		</tbody>
