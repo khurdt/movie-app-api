@@ -77,10 +77,10 @@ app.get('/movies/:title', (req, res) => {
 });
 
 //gets movie genre name
-app.get('/genre/:name', (req, res) => {
-	Genres.find({ name: req.params.name})
-	.then((genre) => {
-		res.json(genre.description);
+app.get('/genre/:genreName', (req, res) => {
+	Movies.findOne({ 'genre.name': req.params.genreName})
+	.then((movie) => {
+		res.json(movie.genre);
 	})
 	.catch((err) => {
 		console.error(err);
@@ -91,10 +91,10 @@ app.get('/genre/:name', (req, res) => {
 //get movie director name
 
 //gets director name
-app.get('/director/:name', (req, res) => {
-	Directors.findOne({ name: req.params.name})
-	.then((director) => {
-		res.json(director);
+app.get('/director/:directorName', (req, res) => {
+	Movies.findOne({ 'director.name': req.params.directorName})
+	.then((movie) => {
+		res.json(movie.director);
 	})
 	.catch((err) => {
 		console.error(err);
