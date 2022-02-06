@@ -2,7 +2,6 @@ const express = require('express'),
 	morgan = require('morgan'),
 	bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
-  uuid = require('uuid'),
   mongoose = require('mongoose'),
   Models = require('./models.js');
 
@@ -21,12 +20,19 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(bodyParser.json());
+//this must come after the middleware bodyParser urlencoded
+let auth = require('./auth')(app);//app at the end allows express to be used in auth.js
+
+const passport = require('passport');
+require('./passport');
 
 app.use(methodOverride());
 
 app.use(morgan('common'));
 
 app.use(express.static('public'));
+
+
 
 //--------READ or GET---------------------------------------------------
 
@@ -55,7 +61,7 @@ app.get('/users/:username', (req, res) => {
 });
 
 //gets all movies
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {
 	Movies.find().then((users) => {
 		res.status(200).json(users);
 	})
@@ -66,7 +72,7 @@ app.get('/movies', (req, res) => {
 });
 
 //gets movie title
-app.get('/movies/:title', (req, res) => {
+app.get('/movies/:title', passport.authenticate('jwt', {session: false}), (req, res) => {
 	Movies.find({title: req.params.title}).then((movies) => {
 		res.json(movies);
 	})
@@ -77,7 +83,7 @@ app.get('/movies/:title', (req, res) => {
 });
 
 //gets movie genre name
-app.get('/genre/:genreName', (req, res) => {
+app.get('/genre/:genreName', passport.authenticate('jwt', {session: false}), (req, res) => {
 	Movies.findOne({ 'genre.name': req.params.genreName})
 	.then((movie) => {
 		res.json(movie.genre);
@@ -91,7 +97,7 @@ app.get('/genre/:genreName', (req, res) => {
 //get movie director name
 
 //gets director name
-app.get('/director/:directorName', (req, res) => {
+app.get('/director/:directorName', passport.authenticate('jwt', {session: false}), (req, res) => {
 	Movies.findOne({ 'director.name': req.params.directorName})
 	.then((movie) => {
 		res.json(movie.director);

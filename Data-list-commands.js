@@ -36,8 +36,9 @@ let users = [
 		"username": "Bob",
 		"password": "bob555",
 		"email": "bob555@gmail.com",
+		"birthday": "1992-02-14T00:00:00.000Z",
 		"favoriteMovies": [],
-		"_id": "61f91e32b2f19563e24f9f78",
+		"_id": "61ffa7ecc1de3ace23a024dd",
 		"__v": 0
 	}
 	{
