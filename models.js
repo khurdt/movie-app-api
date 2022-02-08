@@ -27,10 +27,12 @@ let userSchema = mongoose.Schema({
 	}]
 });
 
+//hashes password from the users Schema
 userSchema.statics.hashPassword = (password) => {
 	return bcrypt.hashSync(password, 10);
 }
 
+//Authenticates hashed password with provided hashed pasword from login
 userSchema.methods.validatePassword = function(password) {
 	return bcrypt.compareSync(password, this.password);
 }

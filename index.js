@@ -5,6 +5,8 @@ const express = require('express'),
   mongoose = require('mongoose'),
   Models = require('./models.js');
 
+  const { check, validateResult } = require('express-validator')
+
   const Movies = Models.Movie;
   const Users = Models.User;
   const app = express();
@@ -23,11 +25,13 @@ app.use(bodyParser.json());
 //this must come after the middleware bodyParser urlencoded
 const cors = require('cors');
 
+//setting limits to what domain can access data
 let allowedOrigins = [
 	'http://localhost:8080', 
 	'http://testsite.com'
 ];
 
+//implementing limits using CORS
 app.use(cors( {
 	origin: (origin, callback) => {
 		if(!origin) return callback(null, true);
@@ -40,8 +44,8 @@ app.use(cors( {
 	}
 }));
 
-
-let auth = require('./auth')(app);//app at the end allows express to be used in auth.js
+//app at the end allows express to be used in auth.js
+let auth = require('./auth')(app);
 
 const passport = require('passport');
 require('./passport');
@@ -51,8 +55,6 @@ app.use(methodOverride());
 app.use(morgan('common'));
 
 app.use(express.static('public'));
-
-
 
 //--------READ or GET---------------------------------------------------
 
@@ -139,8 +141,21 @@ app.get('/documentation.html', (req, res) => {
 
 //--------CREATE or POST---------------------------------------------------
 
-//adds a user to users collection
-app.post('/users', passport.authenticate('jwt', {session: false}), (req, res) => {
+//adds or registers a user to users collection
+app.post('/users',
+	//checks username and password format using express-validator 
+	[
+		check('username', 'username is required').isLength({min: 5}),
+		check('username', 'username contains non non-alphanumeric characters - not allowed').isAlphanumeric(),
+		check('password', 'password is required').not().isEmpty(),
+		check('email', 'email does not appear to be valid').isEmail() 
+	], (req, res) => {
+
+	let errors = validationResult(req);
+	if(!errors.isEmpty()) {
+		return res.status(422).json({ errors: errors.array() });
+	}
+	let hashedPassword = Users.hashPassword(req.body.password);
 	Users.findOne({ username: req.body.username })
 		.then((user) => {
 			if (user) {
@@ -165,7 +180,7 @@ app.post('/users', passport.authenticate('jwt', {session: false}), (req, res) =>
 			console.error(error);
 			res.status(500).send('Error: ' + error);
 		})
-})
+});
 
 //adds a movie to favorite list
 app.post('/users/:username/movies/:MovieID', passport.authenticate('jwt', {session: false}), (req, res) => {
@@ -249,6 +264,7 @@ app.use((err, req, res, next) => {
 
 //--------END--------------------------------------------------------------
 
-app.listen(8080, () => {
-	console.log('Your app is listening on port 8080.');
+const port = process.env.PORT || 8080;
+app.listen(port, '0.0.0.0', () => {
+	console.log('Listening on Port ' + port);
 });

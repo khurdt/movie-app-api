@@ -7,6 +7,7 @@ let Users = Models.User,
 	JWTStrategy = passportJWT.Strategy,
 	ExtractJWT = passportJWT.ExtractJwt;
 
+//Login Logic!
 passport.use(new LocalStrategy({
 	usernameField: 'Username',
 	passwordField: 'Password'
@@ -23,12 +24,17 @@ passport.use(new LocalStrategy({
 			return callback(null, false, {message: 'Incorrect username or password.'});
 		}
 
+		if (!user.validatePassword(password)) {
+			console.log('incorrect password');
+			return callback(null, false, {message: 'Incorrect username.'})
+		}
 
 	console.log('finished');
 	return callback(null, user);
 	});
 }));
 
+//Authorize user by extracting JWT from user id.
 passport.use(new JWTStrategy({
 	jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
 	secretOrKey: 'your_jwt_secret'
