@@ -25,10 +25,11 @@ app.use(bodyParser.json());
 const cors = require('cors');
 
 //setting limits to what domain can access data
-let allowedOrigins = [
-	'http://localhost:8080', 
-	'http://testsite.com'
-];
+let allowedOrigins = *
+// [
+// 	'http://localhost:8080', 
+// 	'http://testsite.com'
+// ];
 
 //implementing limits using CORS
 app.use(cors( {
