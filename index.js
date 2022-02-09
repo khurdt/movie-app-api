@@ -5,7 +5,7 @@ const express = require('express'),
   mongoose = require('mongoose'),
   Models = require('./models.js');
 
-  const { check, validateResult } = require('express-validator')
+  const { check, validationResult } = require('express-validator');
 
   const Movies = Models.Movie;
   const Users = Models.User;
@@ -146,7 +146,7 @@ app.post('/users',
 		check('email', 'email does not appear to be valid').isEmail() 
 	], (req, res) => {
 
-	let errors = validateResult(req);
+	let errors = validationResult(req);
 	if(!errors.isEmpty()) {
 		return res.status(422).json({ errors: errors.array() });
 	}
