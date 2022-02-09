@@ -11,12 +11,8 @@ const express = require('express'),
   const Users = Models.User;
   const app = express();
 
-  // mongoose.connect('mongodb://localhost:27017/movieDB', { 
-  // 	useNewUrlParser: true, useUnifiedTopology: true 
-  // });
-  mongoose.connect('mongodb+srv://khurdt:Xz7ve7ybKaPqgAmO@khurdt.jb0ie.mongodb.net/movieDB?retryWrites=true&w=majority', { 
-  	useNewUrlParser: true, useUnifiedTopology: true 
-  });
+  // mongoose.connect('mongodb://localhost:27017/movieDB', {useNewUrlParser: true, useUnifiedTopology: true});
+  mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //------MiddleWare---------------------------------------------
 
