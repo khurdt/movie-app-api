@@ -1,49 +1,49 @@
 const passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy,
-    Models = require('./models.js'),
-    passportJWT = require('passport-jwt');
+  LocalStrategy = require('passport-local').Strategy,
+  Models = require('./models.js'),
+  passportJWT = require('passport-jwt');
 
 let Users = Models.User,
-    JWTStrategy = passportJWT.Strategy,
-    ExtractJWT = passportJWT.ExtractJwt;
+  JWTStrategy = passportJWT.Strategy,
+  ExtractJWT = passportJWT.ExtractJwt;
 
 //Login Logic!
 passport.use(new LocalStrategy({
-    usernameField: 'username',
-    passwordField: 'password'
+  usernameField: 'username',
+  passwordField: 'password'
 }, (username, password, callback) => {
-    console.log(username + '  ' + password);
-    Users.findOne({ username: username }, (error, user) => {
-        if (error) {
-            console.log(error);
-            return callback(error);
-        }
+  console.log(username + '  ' + password);
+  Users.findOne({ username: username }, (error, user) => {
+    if (error) {
+      console.log(error);
+      return callback(error);
+    }
 
-        if (!user) {
-            console.log('incorrect username');
-            return callback(null, false, { message: 'Incorrect username or password.' });
-        }
+    if (!user) {
+      console.log('incorrect username');
+      return callback(null, false, { message: 'Incorrect username or password.' });
+    }
 
-        if (!user.validatePassword(password)) {
-            console.log('incorrect password');
-            return callback(null, false, { message: 'Incorrect username.' })
-        }
+    if (!user.validatePassword(password)) {
+      console.log('incorrect password');
+      return callback(null, false, { message: 'Incorrect username.' })
+    }
 
-        console.log('finished');
-        return callback(null, user);
-    });
+    console.log('finished');
+    return callback(null, user);
+  });
 }));
 
 //Authorize user by extracting JWT from user id.
 passport.use(new JWTStrategy({
-    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'your_jwt_secret'
+  jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+  secretOrKey: 'your_jwt_secret'
 }, (jwtPayload, callback) => {
-    return Users.findById(jwtPayload._id)
-        .then((user) => {
-            return callback(null, user);
-        })
-        .catch((error) => {
-            return callback(error)
-        });
+  return Users.findById(jwtPayload._id)
+    .then((user) => {
+      return callback(null, user);
+    })
+    .catch((error) => {
+      return callback(error)
+    });
 }));
