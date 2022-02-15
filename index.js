@@ -25,7 +25,8 @@ app.use(bodyParser.json());
 const cors = require('cors');
 
 //setting limits to what domain can access data
-//let allowedOrigins = []
+let allowedOrigins = ['https://kh-movie-app.herokuapp.com/', 'http://127.0.0.1:8080/'];
+
 //implementing limits using CORS
 app.use(cors( {
   origin: (origin, callback) => {
