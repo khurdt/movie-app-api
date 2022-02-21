@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 //this must come after the middleware bodyParser urlencoded
 
 //setting limits to what domain can access data
-let allowedOrigins = ['https://kh-movie-app.herokuapp.com/', 'http://127.0.0.1:8080/', 'http://localhost:1234/'];
+let allowedOrigins = ['https://kh-movie-app.herokuapp.com', 'http://127.0.0.1:8080', 'http://localhost:1234'];
 
 //implementing limits using CORS
 app.use(cors({
