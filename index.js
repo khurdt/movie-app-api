@@ -29,7 +29,7 @@ let allowedOrigins = [
   'https://kh-movie-app.herokuapp.com',
   'http://127.0.0.1:8080',
   'http://localhost:1234',
-  'https://www.themoviedb.org/t/p/'
+  'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/j1NsoYYDYHnPkRr7Enqr8tlexgO.jpg'
 ];
 
 //implementing limits using CORS
