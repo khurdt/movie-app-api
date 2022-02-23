@@ -29,8 +29,7 @@ let allowedOrigins = [
   'https://kh-movie-app.herokuapp.com',
   'http://127.0.0.1:8080',
   'http://localhost:1234',
-  'https://images-na.ssl-images-amazon.com/images/I/81d1lM7u+SS.jpg',
-  'https://m.media-amazon.com/images/M/'
+  'https://www.imdb.com/'
 ];
 
 //implementing limits using CORS
