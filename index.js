@@ -28,8 +28,7 @@ app.use(bodyParser.json());
 let allowedOrigins = [
   'https://kh-movie-app.herokuapp.com',
   'http://127.0.0.1:8080',
-  'http://localhost:1234',
-  'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/j1NsoYYDYHnPkRr7Enqr8tlexgO.jpg'
+  'http://localhost:1234'
 ];
 
 //implementing limits using CORS
@@ -83,7 +82,7 @@ app.get('/users/:username', passport.authenticate('jwt', { session: false }), (r
 });
 
 //gets all movies
-app.get('/movies', function (req, res) {
+app.get('/movies', passport.authenticate('jwt', { session: false }), function (req, res) {
   Movies.find().then((users) => {
     res.status(200).json(users);
   })
