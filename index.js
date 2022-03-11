@@ -28,7 +28,8 @@ app.use(bodyParser.json());
 let allowedOrigins = [
   'https://kh-movie-app.herokuapp.com',
   'http://127.0.0.1:8080',
-  'http://localhost:1234'
+  'http://localhost:1234',
+  'https://kh-cinema-app.netlify.app'
 ];
 
 //implementing limits using CORS
