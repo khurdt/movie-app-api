@@ -202,33 +202,15 @@ app.post('/users/:username/movies/:MovieID', passport.authenticate('jwt', { sess
 
 //changes user's info
 app.put('/users/:username', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Users.findOneAndUpdate({ username: req.params.username },
-    {
-      $set:
-      {
-        username: req.body.username,
-        email: req.body.email,
-        birthday: req.body.birthday
-      }
-    },
-    { new: true },// This line makes sure that the updated document is returned
-    (err, updatedUser) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
-      } else {
-        res.json(updatedUser);
-      }
-    });
-});
-
-app.put('/users/:email', passport.authenticate('jwt', { session: false }), (req, res) => {
   let hashedPassword = Users.hashPassword(req.body.password);
   Users.findOneAndUpdate({ username: req.params.username },
     {
       $set:
       {
+        username: req.body.username,
         password: hashedPassword,
+        email: req.body.email,
+        birthday: req.body.birthday
       }
     },
     { new: true },// This line makes sure that the updated document is returned
