@@ -30,10 +30,7 @@ let allowedOrigins = [
   'http://127.0.0.1:8080',
   'http://localhost:1234',
   'https://kh-cinema-app.netlify.app',
-<<<<<<< Updated upstream
-=======
   'http://localhost:4200/',
->>>>>>> Stashed changes
   'http://localhost:4200'
 ];
 
