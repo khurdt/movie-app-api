@@ -31,7 +31,8 @@ let allowedOrigins = [
   'http://localhost:1234',
   'https://kh-cinema-app.netlify.app',
   'http://localhost:4200',
-  'https://khurdt.github.io/movie-app-angular-client'
+  'https://khurdt.github.io/movie-app-angular-client',
+  'https://khurdt.github.io'
 ];
 
 //implementing limits using CORS
