@@ -7,7 +7,9 @@ let Users = Models.User,
   JWTStrategy = passportJWT.Strategy,
   ExtractJWT = passportJWT.ExtractJwt;
 
-//Login Logic!
+/**After user submits login, this will authenticate username and password with what is located in database
+ * validatePassword is called from models.js in order to authenticate hashed password
+ */
 passport.use(new LocalStrategy({
   usernameField: 'username',
   passwordField: 'password'
@@ -34,7 +36,10 @@ passport.use(new LocalStrategy({
   });
 }));
 
-//Authorize user by extracting JWT from user id.
+/**
+ * Authorize user by extracting JWT from request header.
+ * return user by jwt id.
+ */
 passport.use(new JWTStrategy({
   jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
   secretOrKey: 'your_jwt_secret'

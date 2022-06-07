@@ -5,7 +5,11 @@ const jwt = require('jsonwebtoken'),
 
 require('./passport'); //Your local passport file
 
-//After succesfull login then attach JWT!
+/**
+ * Endpoint /login is located here for registering a user. 
+ * When user provides a valid username and password, 
+ * then the generated JWT token is attached to response.
+ */
 let generateJWTToken = (user) => {
   return jwt.sign(user, jwtSecret, {
     subject: user.username, //This is the username you're encoding in the JWT
@@ -20,7 +24,7 @@ module.exports = (router) => {
     passport.authenticate('local', { session: false }, (error, user, info) => {
       if (error || !user) {
         return res.status(400).json({
-          message: 'Something is not right',
+          message: 'user does not exist, try something else',
           user: user
         });
       }
